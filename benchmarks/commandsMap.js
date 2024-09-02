@@ -28,6 +28,7 @@ export default {
       '--no-strict-peer-dependencies',
       '--config.auto-install-peers=false',
       '--config.resolution-mode=highest',
+      '--config.link-workspace-packages=true',
     ]
   },
   yarn: {
