@@ -1,0 +1,6 @@
+packages:
+  - 'clients/*'
+  - 'clients/libraries/*'
+  - 'common/*'
+  - 'common/utilities/*'
+  - 'servers/*'

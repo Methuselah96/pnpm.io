@@ -1,0 +1,9 @@
+{
+  "name": "@panda/mo",
+  "version": "1.0.0",
+  "dependencies": {
+    "@panda/s": "*",
+    "@types/react": "^18.3.5",
+    "react": "^18.3.1"
+  }
+}

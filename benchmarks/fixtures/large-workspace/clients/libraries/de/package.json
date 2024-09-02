@@ -1,0 +1,31 @@
+{
+  "name": "@panda/de",
+  "version": "1.0.0",
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^5.16.7",
+    "@mui/material": "^5.16.7",
+    "@panda/cl": "*",
+    "@panda/cont": "*",
+    "@panda/da": "*",
+    "@panda/en": "*",
+    "@panda/lo": "*",
+    "@panda/no": "*",
+    "@panda/po": "*",
+    "@panda/ut": "*",
+    "@redux-devtools/core": "^4.0.0",
+    "@redux-devtools/dock-monitor": "^4.0.1",
+    "@redux-devtools/inspector-monitor": "^6.0.1",
+    "@reduxjs/toolkit": "^2.2.7",
+    "@types/lodash": "^4.17.7",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "lodash": "^4.17.21",
+    "notistack": "^3.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2",
+    "redux": "^5.0.1"
+  }
+}

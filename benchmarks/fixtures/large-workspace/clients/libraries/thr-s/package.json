@@ -1,0 +1,24 @@
+{
+  "name": "@panda/thr-s",
+  "version": "1.0.0",
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^5.16.7",
+    "@mui/material": "^5.16.7",
+    "@panda/cl": "*",
+    "@panda/cont": "*",
+    "@panda/g": "*",
+    "@panda/r": "*",
+    "@panda/ut": "*",
+    "@types/lodash": "^4.17.7",
+    "@types/three": "^0.168.0",
+    "@types/react": "^18.3.5",
+    "lodash": "^4.17.21",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "reselect": "^5.1.1",
+    "seedrandom": "^3.0.5",
+    "three": "^0.168.0"
+  }
+}
