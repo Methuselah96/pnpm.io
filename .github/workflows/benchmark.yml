@@ -18,7 +18,7 @@ jobs:
           node-version: 20
       - run: |
           corepack enable
-          corepack prepare pnpm@next-9 --activate
+          corepack prepare pnpm@latest --activate
           corepack prepare yarn@stable --activate
       - run: pnpm --dir=benchmarks install
       - run: pnpm --dir=benchmarks run benchmark
