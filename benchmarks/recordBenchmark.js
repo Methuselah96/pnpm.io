@@ -14,7 +14,7 @@ export default async function (pm, fixture, opts) {
   const limitRuns = opts.limitRuns || Infinity
 
   pm.version = getPMVersion(pm.name, opts)
-  const resultsFile = path.join(RESULTS, pm.scenario, pm.version, `${fixture}.yaml`)
+  const resultsFile = path.join(RESULTS, pm.scenario, pm.version, `${fixture}-${process.env.RUNNER_OS}.yaml`)
   const prevResults = await safeLoadYamlFile(resultsFile) || []
 
   if (prevResults.length >= limitRuns) return prevResults

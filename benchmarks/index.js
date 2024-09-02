@@ -166,7 +166,7 @@ async function run () {
     `)
 
     svgs.push({
-      path: path.join(BENCH_IMGS, `${fixture.name}.svg`),
+      path: path.join(BENCH_IMGS, `${fixture.name}-${process.env.RUNNER_OS}.svg`),
       file: generateSvg(resArray, [cmdsMap.npm, cmdsMap.pnpm, cmdsMap.yarn, cmdsMap.yarn_pnp], testDescriptions, formattedNow)
     })
   }
@@ -196,7 +196,7 @@ async function run () {
   await Promise.all(
     [
       ...svgs.map((file) => fs.promises.writeFile(file.path, file.file, 'utf-8')),
-      fs.promises.writeFile(path.join(DIRNAME, '../src/pages/benchmarks.md'), stripIndents`
+      fs.promises.writeFile(path.join(DIRNAME, `../src/pages/benchmarks-${process.env.RUNNER_OS}.md`), stripIndents`
         ${introduction}
 
         ${explanation}
