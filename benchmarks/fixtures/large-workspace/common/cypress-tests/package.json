@@ -1,0 +1,9 @@
+{
+  "name": "panda-cypress",
+  "version": "0.0.1",
+  "dependencies": {
+    "cypress": "^13.14.1",
+    "cypress-file-upload": "^5.0.8",
+    "typescript": "~5.5.4"
+  }
+}
