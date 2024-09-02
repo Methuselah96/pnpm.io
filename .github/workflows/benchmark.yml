@@ -5,7 +5,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     env:
       COREPACK_ENABLE_AUTO_PIN: 0
     steps:
@@ -30,3 +33,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           message: "chore: update benchmarks"
           branch: main
+          rebase: true
