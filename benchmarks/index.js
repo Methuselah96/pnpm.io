@@ -34,10 +34,14 @@ const fixtures = [
   {
     name: 'medium-size-app',
     mdDesc: '## Medium Size App\n\nThe app\'s `package.json` [here](./fixtures/medium-size-app/package.json)'
-  },*/
+  },
   {
     name: 'alotta-files',
     mdDesc: '## Lots of Files\n\nThe app\'s `package.json` [here](https://github.com/pnpm/pnpm.io/blob/main/benchmarks/fixtures/alotta-files/package.json)'
+  },*/
+  {
+    name: 'redux-devtools',
+    mdDesc: '## Redux Devtools\n\nThe app\'s `package.json` [here](https://github.com/pnpm/pnpm.io/blob/main/benchmarks/fixtures/redux-devtools/package.json)'
   }
 ]
 
