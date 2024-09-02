@@ -1,11 +1,6 @@
 name: Benchmark runner
 
 on:
-  push:
-    branches:
-      - test-bun
-  schedule:
-    - cron: '30 2 * * 0'
   workflow_dispatch:
 
 jobs:
@@ -25,8 +20,6 @@ jobs:
           corepack enable
           corepack prepare pnpm@next-9 --activate
           corepack prepare yarn@stable --activate
-      - run: curl https://bun.sh/install | bash
-      - run: /home/runner/.bun/bin/bun -v
       - run: pnpm --dir=benchmarks install
       - run: pnpm --dir=benchmarks run benchmark
       - run: pnpm --dir=benchmarks run benchmark
