@@ -120,9 +120,6 @@ export default async function benchmark (pm, fixture, opts) {
     switch (pm.scenario) {
       case 'yarn':
         yarnRc += 'nodeLinker: node-modules\n'
-                + 'nmMode: hardlinks-local\n'
-                + 'compressionLevel: 0\n'
-                + 'nodeLinker: pnpm\n'
         break
       case 'yarn_pnp':
         yarnRc += 'nodeLinker: pnp\n'

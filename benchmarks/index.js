@@ -34,10 +34,14 @@ const fixtures = [
   {
     name: 'medium-size-app',
     mdDesc: '## Medium Size App\n\nThe app\'s `package.json` [here](./fixtures/medium-size-app/package.json)'
-  },*/
+  },
   {
     name: 'alotta-files',
     mdDesc: '## Lots of Files\n\nThe app\'s `package.json` [here](https://github.com/pnpm/pnpm.io/blob/main/benchmarks/fixtures/alotta-files/package.json)'
+  }*/
+  {
+    name: 'large-workspace',
+    mdDesc: '## Large workspace\n\nThe app\'s `package.json` [here](https://github.com/pnpm/pnpm.io/blob/main/benchmarks/fixtures/large-workspace/package.json)'
   }
 ]
 
