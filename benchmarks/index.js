@@ -120,7 +120,7 @@ async function run () {
   spawn.sync('pnpm', ['add', 'npm@latest', 'pnpm@next-9'], { cwd: managersDir, stdio: 'inherit' })
   spawn.sync('yarn', ['set', 'version', 'stable'], { cwd: managersDir, stdio: 'inherit' })
   const formattedNow = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date())
-  const pms = [ 'npm', 'pnpm', 'yarn', 'yarn_pnp' ]
+  const pms = [ 'pnpm', 'yarn', 'yarn_pnp' ]
   const sections = []
   const svgs = []
   const opts = {
@@ -129,7 +129,6 @@ async function run () {
     managersDir,
   }
   for (const fixture of fixtures) {
-    const npmRes = min(await benchmark(cmdsMap.npm, fixture.name, opts))
     const yarnRes = min(await benchmark(cmdsMap.yarn, fixture.name, opts))
     const yarnPnPRes = min(await benchmark(cmdsMap.yarn_pnp, fixture.name, {
       ...opts,
@@ -137,7 +136,6 @@ async function run () {
     }))
     const pnpmRes = min(await benchmark(cmdsMap.pnpm, fixture.name, opts))
     const resArray = toArray(pms, {
-      'npm': npmRes,
       'pnpm': pnpmRes,
       'yarn': yarnRes,
       'yarn_pnp': yarnPnPRes,
@@ -146,23 +144,23 @@ async function run () {
     sections.push(stripIndents`
       ${fixture.mdDesc}
 
-      | action  | cache | lockfile | node_modules| npm | pnpm | Yarn | Yarn PnP |
-      | ---     | ---   | ---      | ---         | --- | ---  | ---  | ---      |
-      | install |       |          |             | ${prettyMs(npmRes.firstInstall)} | ${prettyMs(pnpmRes.firstInstall)} | ${prettyMs(yarnRes.firstInstall)} | ${prettyMs(yarnPnPRes.firstInstall)} |
-      | install | ✔     | ✔        | ✔           | ${prettyMs(npmRes.repeatInstall)} | ${prettyMs(pnpmRes.repeatInstall)} | ${prettyMs(yarnRes.repeatInstall)} | n/a |
-      | install | ✔     | ✔        |             | ${prettyMs(npmRes.withWarmCacheAndLockfile)} | ${prettyMs(pnpmRes.withWarmCacheAndLockfile)} | ${prettyMs(yarnRes.withWarmCacheAndLockfile)} | ${prettyMs(yarnPnPRes.withWarmCacheAndLockfile)} |
-      | install | ✔     |          |             | ${prettyMs(npmRes.withWarmCache)} | ${prettyMs(pnpmRes.withWarmCache)} | ${prettyMs(yarnRes.withWarmCache)} | ${prettyMs(yarnPnPRes.withWarmCache)} |
-      | install |       | ✔        |             | ${prettyMs(npmRes.withLockfile)} | ${prettyMs(pnpmRes.withLockfile)} | ${prettyMs(yarnRes.withLockfile)} | ${prettyMs(yarnPnPRes.withLockfile)} |
-      | install | ✔     |          | ✔           | ${prettyMs(npmRes.withWarmCacheAndModules)} | ${prettyMs(pnpmRes.withWarmCacheAndModules)} | ${prettyMs(yarnRes.withWarmCacheAndModules)} | n/a |
-      | install |       | ✔        | ✔           | ${prettyMs(npmRes.withWarmModulesAndLockfile)} | ${prettyMs(pnpmRes.withWarmModulesAndLockfile)} | ${prettyMs(yarnRes.withWarmModulesAndLockfile)} | n/a |
-      | install |       |          | ✔           | ${prettyMs(npmRes.withWarmModules)} | ${prettyMs(pnpmRes.withWarmModules)} | ${prettyMs(yarnRes.withWarmModules)} | n/a |
+      | action  | cache | lockfile | node_modules| pnpm | Yarn | Yarn PnP |
+      | ---     | ---   | ---      | ---         | ---  | ---  | ---      |
+      | install |       |          |             | ${prettyMs(pnpmRes.firstInstall)} | ${prettyMs(yarnRes.firstInstall)} | ${prettyMs(yarnPnPRes.firstInstall)} |
+      | install | ✔     | ✔        | ✔           | ${prettyMs(pnpmRes.repeatInstall)} | ${prettyMs(yarnRes.repeatInstall)} | n/a |
+      | install | ✔     | ✔        |             | ${prettyMs(pnpmRes.withWarmCacheAndLockfile)} | ${prettyMs(yarnRes.withWarmCacheAndLockfile)} | ${prettyMs(yarnPnPRes.withWarmCacheAndLockfile)} |
+      | install | ✔     |          |             | ${prettyMs(pnpmRes.withWarmCache)} | ${prettyMs(yarnRes.withWarmCache)} | ${prettyMs(yarnPnPRes.withWarmCache)} |
+      | install |       | ✔        |             | ${prettyMs(pnpmRes.withLockfile)} | ${prettyMs(yarnRes.withLockfile)} | ${prettyMs(yarnPnPRes.withLockfile)} |
+      | install | ✔     |          | ✔           | ${prettyMs(pnpmRes.withWarmCacheAndModules)} | ${prettyMs(yarnRes.withWarmCacheAndModules)} | n/a |
+      | install |       | ✔        | ✔           | ${prettyMs(pnpmRes.withWarmModulesAndLockfile)} | ${prettyMs(yarnRes.withWarmModulesAndLockfile)} | n/a |
+      | install |       |          | ✔           | ${prettyMs(pnpmRes.withWarmModules)} | ${prettyMs(yarnRes.withWarmModules)} | n/a |
 
       <img alt="Graph of the ${fixture.name} results" src="/img/benchmarks/${fixture.name}.svg" />
     `)
 
     svgs.push({
       path: path.join(BENCH_IMGS, `${fixture.name}-${process.env.RUNNER_OS}.svg`),
-      file: generateSvg(resArray, [cmdsMap.npm, cmdsMap.pnpm, cmdsMap.yarn, cmdsMap.yarn_pnp], testDescriptions, formattedNow)
+      file: generateSvg(resArray, [cmdsMap.pnpm, cmdsMap.yarn, cmdsMap.yarn_pnp], testDescriptions, formattedNow)
     })
   }
 
