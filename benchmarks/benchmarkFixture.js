@@ -53,6 +53,7 @@ export default async function benchmark (pm, fixture, opts) {
       'enableImmutableInstalls: false\n'
     + 'enableMirror: false\n'
     + `cacheFolder: ${path.join(cwd, 'cache')}\n`
+    + 'enableGlobalCache: false\n'
     + 'enableScripts: false\n'
     /**
      * @see https://yarnpkg.com/configuration/yarnrc#nodeLinker
