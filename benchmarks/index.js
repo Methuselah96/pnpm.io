@@ -53,8 +53,7 @@ const tests = [
   'withLockfile',
   'withWarmCacheAndModules',
   'withWarmModulesAndLockfile',
-  'withWarmModules',
-  'updatedDependencies'
+  'withWarmModules'
 ]
 
 const testDescriptions = [
@@ -86,9 +85,6 @@ const testDescriptions = [
   ],
   [ // withWarmModules
     'with node_modules'
-  ],
-  [ // updatedDependencies
-    'update'
   ]
 ]
 
@@ -160,7 +156,6 @@ async function run () {
       | install | ✔     |          | ✔           | ${prettyMs(npmRes.withWarmCacheAndModules)} | ${prettyMs(pnpmRes.withWarmCacheAndModules)} | ${prettyMs(yarnRes.withWarmCacheAndModules)} | n/a |
       | install |       | ✔        | ✔           | ${prettyMs(npmRes.withWarmModulesAndLockfile)} | ${prettyMs(pnpmRes.withWarmModulesAndLockfile)} | ${prettyMs(yarnRes.withWarmModulesAndLockfile)} | n/a |
       | install |       |          | ✔           | ${prettyMs(npmRes.withWarmModules)} | ${prettyMs(pnpmRes.withWarmModules)} | ${prettyMs(yarnRes.withWarmModules)} | n/a |
-      | update  | n/a | n/a | n/a | ${prettyMs(npmRes.updatedDependencies)} | ${prettyMs(pnpmRes.updatedDependencies)} | ${prettyMs(yarnRes.updatedDependencies)} | ${prettyMs(yarnPnPRes.updatedDependencies)} |
 
       <img alt="Graph of the ${fixture.name} results" src="/img/benchmarks/${fixture.name}.svg" />
     `)
@@ -190,7 +185,6 @@ async function run () {
   - \`with cache\`, \`with node_modules\`: The lockfile is deleted and the install command is run again.
   - \`with node_modules\`, \`with lockfile\`: The package cache is deleted and the install command is run again.
   - \`with node_modules\`: The package cache and the lockfile is deleted and the install command is run again.
-  - \`update\`: Updating your dependencies by changing the version in the \`package.json\` and running the install command again.
 `
 
   await Promise.all(
