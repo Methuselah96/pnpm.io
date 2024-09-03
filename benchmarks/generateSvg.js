@@ -1,11 +1,3 @@
-
-const getHighestNumber = (array) => {
-  // flatten array of arrays of numbers into an array of numbers
-  const flattened = [].concat.apply([], array)
-  // return the highest number
-  return Math.max.apply(null, flattened)
-}
-
 const NPM_COLOR = '#cd3731'
 const YARN_COLOR = '#248ebd'
 const YARN_PNP_COLOR = '#40a9ff'
@@ -48,7 +40,7 @@ export default (resultArrays, pms, tests, formattedNow) => {
   }
   // get the highest number of the results so
   // that the graph can be scaled accordingly
-  const max = getHighestNumber(resultArrays)
+  const max = 120
   // upper limit of graph is the highest result rounded
   // up to the nearest number divisible by 5
   const limit = Math.ceil(max / 5) * 5
